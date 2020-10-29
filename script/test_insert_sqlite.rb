@@ -3,7 +3,7 @@
 require 'sqlite3'
 
 begin
-  db = SQLite3::Database.new ENV['TEST_DATABASE_PATH']
+  db = SQLite3::Database.new ENV['DATABASE_PATH']
 
   db.execute "create table if not exists cars (id integer primary key, label text, price integer)"
 
