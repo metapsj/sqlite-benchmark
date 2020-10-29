@@ -3,8 +3,10 @@
 require 'sqlite3'
 
 begin
-  db = SQLite3::Database.new "db/test.db"
+  db = SQLite3::Database.new ENV['TEST_DATABASE_PATH']
+
   db.execute "create table if not exists cars (id integer primary key, label text, price integer)"
+
   db.execute "insert into cars values (1, 'Audi', 52642)"
   db.execute "insert into cars values (2, 'Mercedes', 57127)"
   db.execute "insert into cars values (3, 'Skoda', 9000)"
