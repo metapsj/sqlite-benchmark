@@ -1,0 +1,19 @@
+
+# sqlite-benchmark
+benchmark the performance of sqlite
+
+# scenarios
+- basic
+- compounded
+- async
+- ractors
+
+## basic
+- writes without reads
+- reads without writes
+
+## compounded
+- writes and reads with a single process
+- writes and reads with async
+- writes and reads with ractors
+
