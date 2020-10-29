@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'sqlite3'
-
-db = SQLite3::Database.new ENV['DATABASE_PATH']
+require './lib/migration'
 
 sql = <<~DDL
   create table if not exists cars (
@@ -12,5 +10,5 @@ sql = <<~DDL
   )
 DDL
 
-db.execute sql 
+DB.execute sql 
 
