@@ -3,17 +3,23 @@
 benchmark the performance of sqlite
 
 # scenarios
-- basic
-- compounded
+- discrete
+- compound
 - async
 - ractors
+- multiple tables
 
-## basic
-- writes without reads
-- reads without writes
+## discrete
+- writes only to a single table
+- reads only to a single table
 
-## compounded
-- writes and reads with a single process
-- writes and reads with async
-- writes and reads with ractors
+## compound
+- simple single process
+- simultaneous reads and writes to a single table
+- simultaneous reads and writes to seperate tables
+
+## async
+- async processing
+- simultaneous reads and writes to a single table
+- simultaneous reads and writes to seperate tables
 
