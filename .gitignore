@@ -1,4 +1,6 @@
 .direnv/*
 !.direnv/.keep
 
+db/test.db
+
 .env
