@@ -3,7 +3,7 @@ require 'sqlite3'
 module Migration
   class ExecuteSql
 
-    def self.call
+    def self.call(sql)
       begin
         db = SQLite3::Database.new ENV['DATABASE_PATH']
         db.execute sql
