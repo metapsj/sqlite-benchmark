@@ -18,5 +18,7 @@ down = <<~DDL
   drop table cars;
 DDL
 
-DB.execute (action == :up ? up : down)
+sql = (action == :up ? up : down)
+
+DB.execute sql 
 
