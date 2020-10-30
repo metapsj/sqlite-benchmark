@@ -21,6 +21,8 @@ module Migration
       execute
     end
 
+    private
+
     def execute
       begin
         db = SQLite3::Database.new ENV['DATABASE_PATH']
