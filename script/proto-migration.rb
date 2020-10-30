@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require 'sqlite3'
+
 action = :up
 
 up = <<~DDL
