@@ -20,11 +20,11 @@ sql = (action == :up ? up : down)
 
 begin
   db = SQLite3::Database.new ENV['DATABASE_PATH']
-  db.execute sql 
+  db.execute sql
 rescue SQLite3::Exception => e
   puts "Exception occurred"
   puts e
-ensure 
+ensure
   db.close if db
 end
 
