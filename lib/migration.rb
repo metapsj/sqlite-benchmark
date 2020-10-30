@@ -4,8 +4,8 @@ module Migration
   module Base
     attr_reader :action, :sql
 
-    def initialize(action = :up)
-      @action = action
+    def initialize(action)
+      @action = action ||= :up
       @sql = (action == :up ? up : down)
     end
 
