@@ -2,8 +2,6 @@
 
 require 'sqlite3'
 
-DB = SQLite3::Database.new ENV['DATABASE_PATH']
-
 action = :up
 
 up = <<~DDL
@@ -20,5 +18,13 @@ DDL
 
 sql = (action == :up ? up : down)
 
-DB.execute sql 
+begin
+  db = SQLite3::Database.new ENV['DATABASE_PATH']
+  db.execute sql 
+rescue SQLite3::Exception => e
+  puts "Exception occurred"
+  puts e
+ensure 
+  db.close if db
+end
 
