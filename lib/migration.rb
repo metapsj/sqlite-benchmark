@@ -10,11 +10,11 @@ module Migration
     end
 
     def up
-      raise "up method is not defined"
+      raise "up method is not implemented"
     end
 
     def down
-      raise "down method is not defined"
+      raise "down method is not implemented"
     end
 
     def run
