@@ -1,3 +1,11 @@
 require 'sqlite3'
 
-DB = SQLite3::Database.new ENV['DATABASE_PATH']
+begin
+  db = SQLite3::Database.new ENV['DATABASE_PATH']
+rescue SQLite3::Exception => e
+  puts "Exception Occurred"
+  puts e
+ensure
+  db.close if db
+end
+
