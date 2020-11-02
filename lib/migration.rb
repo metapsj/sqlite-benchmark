@@ -1,4 +1,4 @@
-require 'sqlite3'
+require './lib/execute_sql'
 
 module Migration
   attr_reader :action, :sql
@@ -23,15 +23,7 @@ module Migration
   private
 
   def execute
-    begin
-      db = SQLite3::Database.new ENV['DATABASE_PATH']
-      db.execute sql
-    rescue SQLite3::Exception => e
-      puts "Exception occurred"
-      puts e
-    ensure
-      db.close if db
-    end
+    ExecuteSql.new(ENV['DATABASE_URL']).call(sql)
   end
 
 end
