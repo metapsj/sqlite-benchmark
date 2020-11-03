@@ -12,6 +12,8 @@ files = [
   { filename: "prices-10K.csv", frequency: 10000 },
 ]
 
+header = %w[price_id item_number price created_at]
+
 def generate_csv(filename, frequency)
   csv = File.open(File.join(CSV_PATH, filename), "a")
 
