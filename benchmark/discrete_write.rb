@@ -35,12 +35,12 @@ def exercise(frequency)
     created_at = Time.now.iso8601
     price = rand(0.47..100.00).round(2)
     item_number = Digest::MurmurHash64A.hexdigest("#{price_id}-#{price}-#{created_at}-#{count}")
-    
+
     @execute_sql.call <<~DML
       insert into prices values (
-        '#{price_id}', 
-        '#{item_number}', 
-        #{price}, 
+        '#{price_id}',
+        '#{item_number}',
+        #{price},
         '#{created_at}'
       );
     DML
