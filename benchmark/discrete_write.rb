@@ -12,6 +12,10 @@ def setup
   @execute_sql.open
 
   @execute_sql.call <<~DDL
+    PRAGMA journal_mode=WAL;
+  DDL
+
+  @execute_sql.call <<~DDL
     create table if not exists prices (
       price_id text not null primary key,
       item_number text not null unique,
