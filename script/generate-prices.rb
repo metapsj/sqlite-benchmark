@@ -23,7 +23,7 @@ def generate_csv(filename, frequency)
     price = rand(0.47..100.00).round(2)
     item_number = Digest::MurmurHash64A.hexdigest("#{price_id}-#{price}-#{created_at}-#{count}")
 
-    csv.write("#{price_id}, #{item_number}, #{price}, #{created_at}\n")
+    csv.write("#{price_id},#{item_number},#{price},#{created_at}\n")
   end
 
   csv.close if csv
