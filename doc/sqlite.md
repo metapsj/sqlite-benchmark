@@ -19,3 +19,10 @@ https://github.com/sparklemotion/sqlite3-ruby
 http://zetcode.com/db/sqliteruby/connect/
 
 ---
+
+# Squeezing Performance from SQLite: Insertions
+
+https://medium.com/@JasonWyatt/squeezing-performance-from-sqlite-insertions-971aff98eef2
+
+---
+
