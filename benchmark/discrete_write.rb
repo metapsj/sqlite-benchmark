@@ -7,9 +7,10 @@ require 'digest/murmurhash'
 require './lib/execute_sql'
 
 @execute_sql = ExecuteSql.new(ENV['DATABASE_PATH'])
-@execute_sql.open
 
 def setup
+  @execute_sql.open
+
   @execute_sql.call <<~DDL
     create table if not exists prices (
       price_id text not null primary key,
@@ -24,6 +25,8 @@ def teardown
   @execute_sql.call <<~DDL
     drop table prices;
   DDL
+
+  @execute_sql.close
 end
 
 def exercise(frequency)
