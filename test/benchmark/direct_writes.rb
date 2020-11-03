@@ -20,8 +20,6 @@ def setup
       created_at text not null default current_timestamp
     );
   DDL
-
-  # load
 end
 
 def teardown
