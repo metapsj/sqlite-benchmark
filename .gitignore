@@ -2,5 +2,6 @@
 !.direnv/.keep
 
 db/test.db
+test/fixture/
 
 .env
