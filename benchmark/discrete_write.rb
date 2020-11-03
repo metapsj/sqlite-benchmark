@@ -54,5 +54,5 @@ end
 
 setup
 benchmark
-# teardown
+teardown
 
