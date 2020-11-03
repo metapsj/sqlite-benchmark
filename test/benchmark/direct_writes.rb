@@ -6,7 +6,7 @@ require './lib/execute_sql'
 @execute_sql = ExecuteSql.new(ENV['DATABASE_PATH'])
 
 def setup
-  @execute_sql.open
+  @execute_sql.open if @execute_sql
 
   @execute_sql.call <<~DDL
     PRAGMA journal_mode=WAL;
@@ -29,7 +29,7 @@ def teardown
     drop table prices;
   DDL
 
-  @execute_sql.close
+  @execute_sql.close if @execute_sql
 end
 
 def load_prices(filename)
