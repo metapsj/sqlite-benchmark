@@ -18,5 +18,5 @@ DDL
 
 sql = (action == :up ? up : down)
 
-Migration::ExecuteSql.call(sql)
+ExecuteSql.call(sql)
 
