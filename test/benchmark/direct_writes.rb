@@ -13,6 +13,7 @@ class DirectWrites
 
     @execute_sql.call <<~DDL
       pragma journal_mode=WAL;
+      pragma synchronous=NORMAL;
     DDL
 
     @execute_sql.call <<~DDL

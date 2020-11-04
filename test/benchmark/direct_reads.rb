@@ -12,6 +12,7 @@ class DirectReads
 
     @execute_sql.call <<~DDL
       pragma journal_mode=wal;
+      pragma synchronous=NORMAL;
     DDL
 
     @execute_sql.call <<~DDL
