@@ -2,6 +2,9 @@
 !.direnv/.keep
 
 db/test.db
+db/test.db-shm
+db/test.db-wal
+
 test/fixture/
 
 .env
