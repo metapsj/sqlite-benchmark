@@ -12,7 +12,7 @@ class DirectWrites
     @execute_sql.open if @execute_sql
 
     @execute_sql.call <<~DDL
-      PRAGMA journal_mode=WAL;
+      pragma journal_mode=WAL;
     DDL
 
     @execute_sql.call <<~DDL
