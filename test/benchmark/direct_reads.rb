@@ -39,7 +39,7 @@ class DirectReads
                 item_number,
                 price,
                 created_at
-        from    prices 
+        from    prices
         where   price_id = '#{price_id}';
       DML
     end
