@@ -1,6 +1,6 @@
 require './lib/execute_sql'
 
-module Migration
+module Migratable
   attr_reader :action, :sql
 
   def initialize(action)

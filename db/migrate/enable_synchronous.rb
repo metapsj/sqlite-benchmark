@@ -1,9 +1,9 @@
 #!/bin/usr/env ruby
 
-require './lib/migration'
+require './lib/migratable'
 
 class EnableSynchronous
-  include Migration
+  include Migratable
 
   def up
     <<~DDL

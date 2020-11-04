@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
-require './lib/migration'
+require './lib/migratable'
 
 class CreatePrices
-  include Migration
+  include Migratable
 
   def up
     <<~DDL
