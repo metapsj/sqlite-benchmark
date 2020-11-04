@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 
-require './lib/benchmark'
+require './lib/benchmarkable'
 require './lib/execute_sql'
 
 class DirectReads
-  include Benchmark::Base
+  include Benchmarkable
 
   def setup
     @execute_sql = ExecuteSql.new(ENV['DATABASE_PATH'])
@@ -69,5 +69,5 @@ class DirectReads
 
 end
 
-DirectReads.new.run
+DirectReads.new.call
 
