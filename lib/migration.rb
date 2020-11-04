@@ -23,7 +23,10 @@ module Migration
   private
 
   def execute
-    ExecuteSql.new(ENV['DATABASE_URL']).call(sql)
+    execute_sql = ExecuteSql.new(ENV['DATABASE_PATH'])
+    execute_sql.open if execute_sql
+    execute_sql.call(sql)
+    execute_sql.close if execute_sql
   end
 
 end
