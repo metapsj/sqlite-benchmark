@@ -1,5 +1,3 @@
-#!/bin/usr/env ruby
-
 require './lib/migratable'
 
 class EnableSynchronous
@@ -16,8 +14,5 @@ class EnableSynchronous
       pragma synchronous=FULL;
     DDL
   end
-
 end
-
-EnableSynchronous.new(:up).run
 

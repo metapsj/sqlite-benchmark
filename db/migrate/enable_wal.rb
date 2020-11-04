@@ -1,5 +1,3 @@
-#!/bin/usr/env ruby
-
 require './lib/migratable'
 
 class EnableWal
@@ -16,10 +14,5 @@ class EnableWal
       pragma journal_mode=DELETE;
     DDL
   end
-
 end
-
-# consider: EnableWal.call(:up)
-# or: EnableWal.new(:up).call
-EnableWal.new(:up).run
 

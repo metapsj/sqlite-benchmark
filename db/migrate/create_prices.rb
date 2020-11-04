@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 require './lib/migratable'
 
 class CreatePrices
@@ -8,7 +6,7 @@ class CreatePrices
   def up
     <<~DDL
       create table if not exists prices (
-        price_id integer not null primary key autoincrement,
+        price_id text not null primary key,
         item_number text not null unique,
         price integer not null,
         created_at text not null default current_timestamp
@@ -22,6 +20,4 @@ class CreatePrices
     DDL
   end
 end
-
-CreatePrices.new(:up).run
 
