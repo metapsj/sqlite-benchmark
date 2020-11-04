@@ -16,7 +16,7 @@ module Migratable
     raise "down method is not implemented"
   end
 
-  def run
+  def call
     execute
   end
 
@@ -28,6 +28,5 @@ module Migratable
     execute_sql.call(sql)
     execute_sql.close if execute_sql
   end
-
 end
 
