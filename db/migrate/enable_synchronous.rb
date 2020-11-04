@@ -15,8 +15,6 @@ class EnableSynchronous
     <<~DDL
       pragma synchronous=FULL;
     DDL
-      
-    DDL
   end
 
 end
