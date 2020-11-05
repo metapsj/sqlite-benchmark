@@ -25,6 +25,6 @@ module Modulable
 end
 
 class Testy
-  include Migratable
+  include Modulable
 end
 
