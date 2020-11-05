@@ -1,4 +1,4 @@
-#!/bin/usr/env ruby
+#!/usr/bin/env ruby
 
 require './db/migrate/enable_wal'
 require './db/migrate/enable_synchronous'
