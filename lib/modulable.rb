@@ -2,28 +2,28 @@
 module Modulable
   def self.included(cls)
     cls.class_exec do
-      include SomethingInclude
-      extend AnotherExtend
+      include IncludeSomething
+      extend ExtendAnother
     end
 
-    def included_in_hook
-      puts "#included_in_hook"
+    def defined_via_hook
+      puts "#defined_via_hook"
     end
   end
 
-  def included_directly
-    puts "#included_directly"
+  def defined_directly
+    puts "#defined_directly"
   end
 
-  module SomethingInclude
+  module IncludeSomething
     def something
-      puts "SomethingInclude#something"
+      puts "IncludeSomthing#something"
     end
   end
 
-  module AnotherExtend
+  module ExtendAnother
     def another
-      puts "AnotherExtend::another"
+      puts "ExtendAnother::another"
     end
   end
 end
