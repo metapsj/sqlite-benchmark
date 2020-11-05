@@ -1,5 +1,5 @@
 
-module Migratable
+module Modulable
   def self.included(cls)
     cls.class_exec do
       include SomethingInclude
@@ -22,5 +22,9 @@ module Migratable
       puts "AnotherExtend::another"
     end
   end
+end
+
+class Testy
+  include Migratable
 end
 
