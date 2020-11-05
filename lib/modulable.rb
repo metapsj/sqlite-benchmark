@@ -6,9 +6,13 @@ module Modulable
       extend AnotherExtend
     end
 
-    def method_included
-      puts "#method_included"
+    def included_in_hook
+      puts "#included_in_hook"
     end
+  end
+
+  def included_directly
+    puts "#included_directly"
   end
 
   module SomethingInclude
