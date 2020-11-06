@@ -5,10 +5,11 @@ require './lib/execute_sql'
 action = :up
 
 up = <<~DDL
-  create table if not exists cars (
-    id integer primary key,
-    label text,
-    price integer
+  create table if not exists prices (
+    id text not null primary key,
+    item_number text not null unique,
+    price integer not null,
+    created_at text not null default current_timestamp
   );
 DDL
 
