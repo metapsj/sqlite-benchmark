@@ -4,8 +4,12 @@ require './db/migrate/enable_wal'
 require './db/migrate/enable_synchronous'
 require './db/migrate/create_prices'
 
-EnableWal.new(:up).call
-EnableSynchronous.new(:up).call
+puts "enable journal mode wal"
+EnableWal.call(:up)
 
-CreatePrices.new(:up).call
+puts "enable synchronous normal"
+EnableSynchronous.call(:up)
+
+puts "create table prices"
+CreatePrices.call(:up)
 
