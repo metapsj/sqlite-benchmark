@@ -6,9 +6,9 @@ action = :up
 
 up = <<~DDL
   create table if not exists prices (
-    id text not null primary key,
+    price_id text not null primary key,
     item_number text not null unique,
-    price integer not null,
+    price integer not null default 0,
     created_at text not null default current_timestamp
   );
 DDL
