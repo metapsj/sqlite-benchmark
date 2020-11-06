@@ -20,8 +20,8 @@ module Migratable
       instance
     end
 
-    def call
-      instance = build
+    def call(action)
+      instance = build(action)
       instance.call
     end
   end
@@ -37,6 +37,8 @@ module Migratable
   end
 
   module Configure
+    attr_accessor :action, :sql
+
     def configure(**kwargs)
       action = kwargs.fetch(:action, :up)
       sql = (action == :up ? up : down)
@@ -44,8 +46,6 @@ module Migratable
   end
   
   module Execute
-    attr_accessor :action, :sql
-
     def execute
       execute_sql = ExecuteSql.new(ENV['DATABASE_PATH'])
       execute_sql.open if execute_sql
