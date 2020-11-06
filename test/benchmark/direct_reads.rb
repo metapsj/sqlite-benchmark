@@ -69,5 +69,5 @@ class DirectReads
 
 end
 
-DirectReads.new.call
+DirectReads.call
 

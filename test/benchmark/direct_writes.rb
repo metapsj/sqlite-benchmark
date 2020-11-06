@@ -70,5 +70,5 @@ class DirectWrites
 
 end
 
-DirectWrites.new.call
+DirectWrites.call
 
