@@ -3,9 +3,9 @@ require './lib/execute_sql'
 module Migratable
   def self.included(cls)
     cls.class_exec do
+      extend Build
       include Migrate
       include Execute
-      extend Build
       prepend Configure
 
       alias_method :call, :execute
@@ -26,6 +26,15 @@ module Migratable
     end
   end
 
+  module Configure
+    attr_reader :action, :sql
+
+    def configure(**kwargs)
+      @action = kwargs.fetch(:action, :up)
+      @sql = (action == :up ? up : down)
+    end
+  end
+
   module Migrate
     def up
       raise "Migrate#up has not been implemented"
@@ -36,15 +45,6 @@ module Migratable
     end
   end
 
-  module Configure
-    attr_accessor :action, :sql
-
-    def configure(**kwargs)
-      action = kwargs.fetch(:action, :up)
-      sql = (action == :up ? up : down)
-    end
-  end
-  
   module Execute
     def execute
       execute_sql = ExecuteSql.new(ENV['DATABASE_PATH'])
