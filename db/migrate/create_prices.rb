@@ -3,21 +3,17 @@ require './lib/migratable'
 class CreatePrices
   include Migratable
 
-  def up
-    <<~DDL
-      create table if not exists prices (
-        price_id text not null primary key,
-        item_number text not null unique,
-        price integer not null,
-        created_at text not null default current_timestamp
-      );
-    DDL
-  end
+  up <<~SQL
+    create table if not exists prices (
+      price_id text not null primary key,
+      item_number text not null unique,
+      price integer not null,
+      created_at text not null default current_timestamp
+    );
+  SQL
 
-  def down
-    <<~DDL
-      drop table prices;
-    DDL
-  end
+  down <<~SQL
+    drop table prices;
+  SQL
 end
 

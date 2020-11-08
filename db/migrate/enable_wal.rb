@@ -3,16 +3,12 @@ require './lib/migratable'
 class EnableWal
   include Migratable
 
-  def up
-    <<~DDL
-      pragma journal_mode=WAL;
-    DDL
-  end
+  up <<~SQL
+    pragma journal_mode=WAL;
+  SQL
 
-  def down
-    <<~DDL
-      pragma journal_mode=DELETE;
-    DDL
-  end
+  down <<~SQL
+    pragma journal_mode=DELETE;
+  SQL
 end
 

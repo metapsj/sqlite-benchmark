@@ -1,56 +1,83 @@
-require './lib/execute_sql'
+require 'sqlite3'
 
 module Migratable
   def self.included(cls)
     cls.class_exec do
+      extend Macro
       extend Build
+      include Configure
       include Migrate
-      include Execute
-      prepend Configure
+      include Database
+    end
+  end
 
-      alias_method :call, :execute
+  module Macro
+    attr_reader :up_sql, :down_sql
+
+    def up(sql)
+      @up_sql = sql
+    end
+
+    def down(sql)
+      @down_sql = sql
     end
   end
 
   module Build
-    def build(action=nil)
-      action ||= :up
+    def build
       instance = new
-      instance.configure(action: :up)
+      instance.configure
       instance
-    end
-
-    def call(action)
-      instance = build(action)
-      instance.call
     end
   end
 
   module Configure
-    attr_reader :action, :sql
-
-    def configure(**kwargs)
-      @action = kwargs.fetch(:action, :up)
-      @sql = (action == :up ? up : down)
+    def configure
+      open ENV['DATABASE_PATH'] 
     end
   end
 
   module Migrate
+    def up_sql
+      self.class.up_sql
+    end
+
+    def down_sql
+      self.class.down_sql
+    end
+
     def up
-      raise "Migrate#up has not been implemented"
+      execute(up_sql)
     end
 
     def down
-      raise "Migrate#down has not been implemented"
+      execute(down_sql)
     end
   end
 
-  module Execute
-    def execute
-      execute_sql = ExecuteSql.new(ENV['DATABASE_PATH'])
-      execute_sql.open if execute_sql
-      execute_sql.call(sql)
-      execute_sql.close if execute_sql
+  module Database
+    attr_reader :db
+
+    def open(connection_string)
+      begin
+        @db = SQLite3::Database.new connection_string
+      rescue SQLite3::Exception => e
+        puts "Exception Occurred"
+        puts e
+      end
+    end
+
+    def close
+      db.close if db
+    end
+
+    def execute(sql)
+      begin
+        db.execute sql
+      rescue SQLite3::Exception => e
+        puts "Exception Occurred"
+        puts e
+      end
     end
   end
 end
