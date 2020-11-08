@@ -33,7 +33,7 @@ module Migratable
 
   module Configure
     def configure
-      open ENV['DATABASE_PATH'] 
+      open ENV['DATABASE_PATH']
     end
   end
 
