@@ -38,10 +38,14 @@ module Migratable
   end
 
   module Migrate
+    # consider moving assignment to configure 
+    # rather than exposing class methods to instance methods
     def up_sql
       self.class.up_sql
     end
 
+    # consider moving assignment to configure 
+    # rather than exposing class methods to instance methods
     def down_sql
       self.class.down_sql
     end
