@@ -5,11 +5,11 @@ require './db/migrate/enable_synchronous'
 require './db/migrate/create_prices'
 
 puts "enable journal mode wal"
-wal = EnableWal.build.up
+EnableWal.build.up
 
 puts "enable synchronous normal"
-sync = EnableSynchronous.build.up
+EnableSynchronous.build.up
 
 puts "create table prices"
-prices = CreatePrices.build.up
+CreatePrices.build.up
 
